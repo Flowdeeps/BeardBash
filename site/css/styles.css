@@ -1,3 +1,14 @@
 * {
-  text-decoration: blink;
 }
+body {
+  background: black;
+  margin: 0;
+  }
+canvas {
+  position: relative;
+  background: white;
+  height: 600px;
+  width: 800px;
+  margin-left: 50%;
+  left: -25%;
+  }
