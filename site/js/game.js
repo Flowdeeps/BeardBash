@@ -7,6 +7,9 @@ window.onload = function(){
 	var step = 1/fps;
 	var now, last = timestamp();
 
+  // game vars
+
+
   // update function
   // shim layer with setTimeout fallback
   window.requestAnimFrame = (function(){
@@ -39,7 +42,7 @@ window.onload = function(){
   }
   // usage:
   // instead of setInterval(render, 16) ....
-	
+	//
 	function render(dt){
 		clearScreen();
 		printMsg(dt, 10, 25);
@@ -59,6 +62,7 @@ window.onload = function(){
 		dt = now - last;
 
 		update(dt);
+		render();
 		last = now;
 	}
 
