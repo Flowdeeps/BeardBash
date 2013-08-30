@@ -21,7 +21,7 @@ window.onload = function(){
   // usage:
   // instead of setInterval(render, 16) ....
 	
-	function render(dt){
+	function render(){
 	};
 	// usage:
 	// all render to screen
@@ -38,7 +38,7 @@ window.onload = function(){
 		var dt = now - last;
 
 		update(dt);
-		render(dt);
+		render();
 		last = now;
 	};
 
