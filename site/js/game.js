@@ -14,14 +14,14 @@ window.onload = function(){
             };
   })();
 
-  function render(){
+  function update(){
   };
   // usage:
   // instead of setInterval(render, 16) ....
 
   (function animloop(){
     requestAnimFrame(animloop);
-    render();
+    update();
   })();
   // place the rAF *before* the render() to assure as close to
   // 60fps with the setTimeout fallback.
