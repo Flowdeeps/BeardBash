@@ -46,7 +46,7 @@ window.onload = function(){
 
 		update(dt);
 		render();
-		last = now;
+		var last = now;
 	}
 
 };
