@@ -1,1 +1,3 @@
-// alert('go fuck yourself');
+window.onload = function(){
+  console.log('ready');
+};
