@@ -1,9 +1,11 @@
 window.onload = function(){
 
   // globals
-  var ctx = document.getElementById('canvas').getContext('2d');
+  var c = document.getElementById('canvas');
+	var ctx = c.getContext('2d');
 	var fps = 60;
 	var step = 1/fps;
+	var now, last = timestamp();
 
   // update function
   // shim layer with setTimeout fallback
@@ -23,12 +25,24 @@ window.onload = function(){
       return new Date().getTime();
   }
 
+	function printMsg(msg, x, y) {
+		ctx.font = "12pt Calibri";
+		ctx.fillText(msg, x, y);
+	}
+
+	function clearScreen() {
+		ctx.clearRect(0, 0, c.width, c.height);
+	}
+
   function update(dt){
+		render(dt);
   }
   // usage:
   // instead of setInterval(render, 16) ....
 	
-	function render(){
+	function render(dt){
+		clearScreen();
+		printMsg(dt, 10, 25);
 	};
 	// usage:
 	// all render to screen
@@ -41,11 +55,10 @@ window.onload = function(){
   // 60fps with the setTimeout fallback.
 
 	function main(){
-		var now = timestamp();
-		var dt = now - last;
+		now = timestamp();
+		dt = now - last;
 
 		update(dt);
-		render();
 		last = now;
 	}
 
