@@ -77,7 +77,6 @@ window.onload = function(){
 		dt = now - last;
 
 		update(dt);
-		render();
 		last = now;
 	}
 
