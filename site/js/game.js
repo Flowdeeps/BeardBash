@@ -26,7 +26,7 @@ window.onload = function(){
 
   (function animloop(){
     requestAnimFrame(animloop);
-    update();
+    main();
   })();
   // place the rAF *before* the render() to assure as close to
   // 60fps with the setTimeout fallback.
