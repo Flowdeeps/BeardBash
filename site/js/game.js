@@ -2,6 +2,8 @@ window.onload = function(){
 
   // globals
   var ctx = document.getElementById('canvas').getContext('2d');
+	var fps = 60;
+	var step = 1/fps;
 
   // update function
   // shim layer with setTimeout fallback
@@ -14,12 +16,12 @@ window.onload = function(){
             };
   })();
 
-  function update(){
+  function update(dt){
   };
   // usage:
   // instead of setInterval(render, 16) ....
 	
-	function render(){
+	function render(dt){
 	};
 	// usage:
 	// all render to screen
@@ -32,8 +34,12 @@ window.onload = function(){
   // 60fps with the setTimeout fallback.
 
 	function main(){
-		update();
-		render();
+		var now = timestamp();
+		var dt = now - last;
+
+		update(dt);
+		render(dt);
+		last = now;
 	};
 
 
