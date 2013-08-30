@@ -1,5 +1,8 @@
 window.onload = function(){
 
+  // globals
+  var ctx = document.getElementById('canvas').getContext('2d');
+
   // update function
   // shim layer with setTimeout fallback
   window.requestAnimFrame = (function(){
@@ -11,7 +14,8 @@ window.onload = function(){
             };
   })();
 
-
+  function render(){
+  };
   // usage:
   // instead of setInterval(render, 16) ....
 
