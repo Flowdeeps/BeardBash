@@ -16,8 +16,15 @@ window.onload = function(){
             };
   })();
 
+  function timestamp() {
+    if (window.performance && window.performance.now)
+      return window.performance.now();
+    else
+      return new Date().getTime();
+  }
+
   function update(dt){
-  };
+  }
   // usage:
   // instead of setInterval(render, 16) ....
 	
@@ -40,7 +47,6 @@ window.onload = function(){
 		update(dt);
 		render();
 		last = now;
-	};
-
+	}
 
 };
