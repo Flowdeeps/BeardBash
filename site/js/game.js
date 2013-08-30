@@ -5,6 +5,9 @@ window.onload = function(){
 	var fps = 60;
 	var step = 1/fps;
 
+  // game vars
+
+
   // update function
   // shim layer with setTimeout fallback
   window.requestAnimFrame = (function(){
@@ -27,9 +30,9 @@ window.onload = function(){
   }
   // usage:
   // instead of setInterval(render, 16) ....
-	
+
 	function render(){
-	};
+	}
 	// usage:
 	// all render to screen
 
