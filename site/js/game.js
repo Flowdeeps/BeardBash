@@ -9,6 +9,21 @@ window.onload = function(){
 
   // game vars
 
+  document.onkeydown=function(e){
+  // left
+    if (e.keyCode == 37){
+      console.log('is left');
+  // right
+    } else if (e.keyCode == 39) {
+      console.log('is right');
+  // z key
+    } else if (e.keyCode == 90) {
+      console.log('is right');
+  // x key
+    } else if (e.keyCode == 88) {
+      console.log('is right');
+    }
+  };
 
   // update function
   // shim layer with setTimeout fallback
