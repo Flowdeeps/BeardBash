@@ -64,7 +64,9 @@ window.onload = function(){
 
 	function printMsg(msg, x, y) {
 		ctx.font = "12pt Calibri";
-		ctx.fillText(msg, x, y);
+    ctx.fillStyle = "rgb(0, 0, 0)";
+    ctx.fillText(msg, x, y);
+    ctx.fill();
 	}
 
 	function clearScreen() {
@@ -78,20 +80,25 @@ window.onload = function(){
 		}
 		return someArray;
 	}
-	
+
 	function decreaseMeter(player, dt) {
 		var playerIndex = player - 1;
-		effortMeters[playerIndex] -= dt/100;
+    if (effortMeters[playerIndex] <= 0){
+      effortMeters[playerIndex] = 0;
+    } else {
+      effortMeters[playerIndex] -= dt/100;
+    }
 	}
 		
 	function increaseMeter(player, dt) {
 		var playerIndex = player - 1;
 		var currentKeyDown = keyDown // to prevent race conditions
 		if (currentKeyDown == currentKey[playerIndex]) {
-			effortMeters[playerIndex] += dt/50 ;
+			effortMeters[playerIndex] += dt/10 ;
 			for(i=0; i<= 1; i++){
 				if(currentKeyDown != playerKeys[playerIndex][i]) {
-					var nextKey = currentKeyDown;
+					var nextKey = playerKeys[playerIndex][i];
+					console.log(nextKey);
 				}
 			}
 			
@@ -99,6 +106,13 @@ window.onload = function(){
 		}
 	}
 
+  // create rectangles
+  var drawMeters = function(x, y, w, h){
+    ctx.beginPath();
+    ctx.fillStyle = "rgb(125, 0, 0)";
+    ctx.fillRect(x, y, w, h);
+    ctx.fill();
+  };
 
   function update(dt){
 		decreaseMeter(1, dt);
@@ -112,6 +126,8 @@ window.onload = function(){
 		clearScreen();
 		printMsg("DT=" + dt, 10, 25);
 		printMsg("eff=" + effortMeters[0], 10, 50);
+    // height of convas is being reported as 150px!
+    drawMeters(270, (145 - (effortMeters[0])), 20, effortMeters[0]);
 	}
 	// usage:
 	// all render to screen
