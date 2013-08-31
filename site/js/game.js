@@ -60,7 +60,7 @@ window.onload = function(){
 
 	function printMsg(msg, x, y) {
 		ctx.font = "12pt Calibri";
-		ctx.fillText("DT = " + msg, x, y);
+		ctx.fillText(msg, x, y);
 	}
 
 	function clearScreen() {
@@ -74,16 +74,15 @@ window.onload = function(){
 		}
 		return someArray;
 	}
+	
+	function decreaseMeter(player, dt) {
+		effortMeters[player - 1] -= dt/100;
+	}
+		
 
-  // create rectangles
-  var drawMeters = function(x, y, w, h){
-    ctx.beginPath();
-    ctx.fillRect(x, y, w, h);
-    ctx.fillStyle = "rgb(0, 0, 0)";
-    ctx.fill();
-  };
 
   function update(dt){
+		decreaseMeter(1, dt);
 		render(dt);
   }
   // usage:
@@ -91,8 +90,8 @@ window.onload = function(){
 	//
 	function render(dt){
 		clearScreen();
-    drawMeters(275, 0, 25, 150);
-    printMsg(dt, 10, 25);
+		printMsg("DT=" + dt, 10, 25);
+		printMsg("eff=" + effortMeters[0], 10, 50);
 	}
 	// usage:
 	// all render to screen
