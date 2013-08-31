@@ -2,7 +2,9 @@ window.onload = function(){
 
   // globals
   var c = document.getElementById('canvas');
-	var ctx = c.getContext('2d');
+      c.width  = 600;
+      c.height = 400;
+  var ctx = c.getContext('2d');
 	var fps = 60;
 	var step = 1/fps;
 	var now, last = timestamp();
@@ -29,7 +31,7 @@ window.onload = function(){
 
   document.onkeydown=function(e){
   // comma
-	  keyDown = e.keyCode;
+    keyDown = e.keyCode;
     if (e.keyCode == COMMA){
       console.log('is comma');
   // full stop
@@ -86,13 +88,13 @@ window.onload = function(){
     if (effortMeters[playerIndex] <= 0){
       effortMeters[playerIndex] = 0;
     } else {
-      effortMeters[playerIndex] -= dt/100;
+      effortMeters[playerIndex] -= dt/c.height;
     }
 	}
-		
+
 	function increaseMeter(player, dt) {
 		var playerIndex = player - 1;
-		var currentKeyDown = keyDown // to prevent race conditions
+    var currentKeyDown = keyDown; // to prevent race conditions
 		if (currentKeyDown == currentKey[playerIndex]) {
 			effortMeters[playerIndex] += dt/10 ;
 			for(i=0; i<= 1; i++){
@@ -101,7 +103,7 @@ window.onload = function(){
 					console.log(nextKey);
 				}
 			}
-			
+
 			currentKey[playerIndex] = nextKey;
 		}
 	}
@@ -127,8 +129,8 @@ window.onload = function(){
 		printMsg("DT=" + dt, 10, 25);
 		printMsg("eff=" + effortMeters[0], 10, 50);
     // height of convas is being reported as 150px!
-    drawMeters(270, 5, 20, 140, '#000000');
-    drawMeters(270, (145 - (effortMeters[0])), 20, effortMeters[0], '#ff0000');
+    drawMeters((c.width - 25), 5, 20, (c.height - 10), '#000000');
+    drawMeters((c.width - 25), (c.height - 5) - effortMeters[0], 20, effortMeters[0], '#ff0000');
 	}
 	// usage:
 	// all render to screen
