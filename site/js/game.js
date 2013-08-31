@@ -6,6 +6,9 @@ window.onload = function(){
 	var fps = 60;
 	var step = 1/fps;
 	var now, last = timestamp();
+	var players = 1;
+	var effortMeters = createMeters(players);
+	console.log(effortMeters);
 
   // game vars
 
@@ -58,6 +61,15 @@ window.onload = function(){
 	function clearScreen() {
 		ctx.clearRect(0, 0, c.width, c.height);
 	}
+
+	function createMeters(num) {
+		someArray = [];
+		for (num; num > 0; num--) {
+			someArray.push(0);
+		}
+		return someArray;
+	}
+
 
   function update(dt){
 		render(dt);
