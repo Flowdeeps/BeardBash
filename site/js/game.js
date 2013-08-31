@@ -9,19 +9,26 @@ window.onload = function(){
 
   // game vars
 
+  // wnat to know what the key your pressing is? uncomment this code and comment out the following one
+  // document.onkeydown=function(e){
+  //   e=e?e:typeof event!='undefined'?event:null;
+  //   if(!e)return 0;
+  //   alert(e.keyCode)
+  // }
+
   document.onkeydown=function(e){
-  // left
-    if (e.keyCode == 37){
+  // comma
+    if (e.keyCode == 188){
       console.log('is left');
-  // right
-    } else if (e.keyCode == 39) {
+  // full stop
+    } else if (e.keyCode == 190) {
       console.log('is right');
   // z key
     } else if (e.keyCode == 90) {
-      console.log('is right');
+      console.log('is comma');
   // x key
     } else if (e.keyCode == 88) {
-      console.log('is right');
+      console.log('is fullstop');
     }
   };
 
