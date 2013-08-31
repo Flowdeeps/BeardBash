@@ -75,6 +75,13 @@ window.onload = function(){
 		return someArray;
 	}
 
+  // create rectangles
+  var drawMeters = function(x, y, w, h){
+    ctx.beginPath();
+    ctx.fillRect(x, y, w, h);
+    ctx.fillStyle = "rgb(0, 0, 0)";
+    ctx.fill();
+  };
 
   function update(dt){
 		render(dt);
@@ -84,7 +91,8 @@ window.onload = function(){
 	//
 	function render(dt){
 		clearScreen();
-		printMsg(dt, 10, 25);
+    drawMeters(275, 0, 25, 150);
+    printMsg(dt, 10, 25);
 	}
 	// usage:
 	// all render to screen
