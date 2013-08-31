@@ -7,6 +7,7 @@ window.onload = function(){
 	var step = 1/fps;
 	var now, last = timestamp();
 	var players = 1;
+	var initialMeter = 100;
 	var effortMeters = createMeters(players);
 
 	var COMMA = 188;
@@ -69,7 +70,7 @@ window.onload = function(){
 	function createMeters(num) {
 		someArray = [];
 		for (num; num > 0; num--) {
-			someArray.push(0);
+			someArray.push(initialMeter);
 		}
 		return someArray;
 	}
