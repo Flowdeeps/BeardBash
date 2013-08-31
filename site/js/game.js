@@ -9,12 +9,15 @@ window.onload = function(){
 	var players = 1;
 	var initialMeter = 100;
 	var effortMeters = createMeters(players);
+	var keyDown = 0;
 
 	var COMMA = 188;
 			FULLSTOP = 190;
 			Z = 90;
 			X = 88;
 
+	var currentKey = [Z, COMMA];
+	var playerKeys = [[Z, X],[COMMA, FULLSTOP]];
   // game vars
 
   // wnat to know what the key your pressing is? uncomment this code and comment out the following one
@@ -26,6 +29,7 @@ window.onload = function(){
 
   document.onkeydown=function(e){
   // comma
+	  keyDown = e.keyCode;
     if (e.keyCode == COMMA){
       console.log('is comma');
   // full stop
@@ -78,11 +82,28 @@ window.onload = function(){
 	}
 
 	function decreaseMeter(player, dt) {
-    if (effortMeters[player - 1] <= 0){
-      effortMeters[player - 1] = 0;
+		var playerIndex = player - 1;
+    if (effortMeters[playerIndex] <= 0){
+      effortMeters[playerIndex] = 0;
     } else {
-      effortMeters[player - 1] -= dt/100;
+      effortMeters[playerIndex] -= dt/100;
     }
+	}
+		
+	function increaseMeter(player, dt) {
+		var playerIndex = player - 1;
+		var currentKeyDown = keyDown // to prevent race conditions
+		if (currentKeyDown == currentKey[playerIndex]) {
+			effortMeters[playerIndex] += dt/10 ;
+			for(i=0; i<= 1; i++){
+				if(currentKeyDown != playerKeys[playerIndex][i]) {
+					var nextKey = playerKeys[playerIndex][i];
+					console.log(nextKey);
+				}
+			}
+			
+			currentKey[playerIndex] = nextKey;
+		}
 	}
 
   // create rectangles
@@ -95,7 +116,7 @@ window.onload = function(){
 
   function update(dt){
 		decreaseMeter(1, dt);
-    drawMeters(275, 0, 25, 150);
+		increaseMeter(1, dt);
 		render(dt);
   }
   // usage:
