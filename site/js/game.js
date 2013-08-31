@@ -9,12 +9,15 @@ window.onload = function(){
 	var players = 1;
 	var initialMeter = 100;
 	var effortMeters = createMeters(players);
+	var keyDown = 0;
 
 	var COMMA = 188;
 			FULLSTOP = 190;
 			Z = 90;
 			X = 88;
 
+	var currentKey = [Z, COMMA];
+	var playerKeys = [[Z, X],[COMMA, FULLSTOP]];
   // game vars
 
   // wnat to know what the key your pressing is? uncomment this code and comment out the following one
@@ -26,6 +29,7 @@ window.onload = function(){
 
   document.onkeydown=function(e){
   // comma
+	  keyDown = e.keyCode;
     if (e.keyCode == COMMA){
       console.log('is comma');
   // full stop
@@ -76,13 +80,29 @@ window.onload = function(){
 	}
 	
 	function decreaseMeter(player, dt) {
-		effortMeters[player - 1] -= dt/100;
+		var playerIndex = player - 1;
+		effortMeters[playerIndex] -= dt/100;
 	}
 		
+	function increaseMeter(player, dt) {
+		var playerIndex = player - 1;
+		var currentKeyDown = keyDown // to prevent race conditions
+		if (currentKeyDown == currentKey[playerIndex]) {
+			effortMeters[playerIndex] += dt/50 ;
+			for(i=0; i<= 1; i++){
+				if(currentKeyDown != playerKeys[playerIndex][i]) {
+					var nextKey = currentKeyDown;
+				}
+			}
+			
+			currentKey[playerIndex] = nextKey;
+		}
+	}
 
 
   function update(dt){
 		decreaseMeter(1, dt);
+		increaseMeter(1, dt);
 		render(dt);
   }
   // usage:
