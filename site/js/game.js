@@ -11,6 +11,8 @@ window.onload = function(){
 	var players = 1;
 	var initialMeter = 100;
 	var effortMeters = createMeters(players);
+	var decreaseRate = 1/75;
+	var increaseRate = 1/10;
 	var keyDown = 0;
 
 	var COMMA = 188;
@@ -88,7 +90,7 @@ window.onload = function(){
     if (effortMeters[playerIndex] <= 0){
       effortMeters[playerIndex] = 0;
     } else {
-      effortMeters[playerIndex] -= dt/c.height;
+      effortMeters[playerIndex] -= dt * decreaseRate;
     }
 	}
 
@@ -96,7 +98,7 @@ window.onload = function(){
 		var playerIndex = player - 1;
     var currentKeyDown = keyDown; // to prevent race conditions
 		if (currentKeyDown == currentKey[playerIndex]) {
-			effortMeters[playerIndex] += dt/10 ;
+			effortMeters[playerIndex] += dt * increaseRate ;
 			for(i=0; i<= 1; i++){
 				if(currentKeyDown != playerKeys[playerIndex][i]) {
 					var nextKey = playerKeys[playerIndex][i];
