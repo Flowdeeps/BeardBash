@@ -19,16 +19,16 @@ window.onload = function(){
   document.onkeydown=function(e){
   // comma
     if (e.keyCode == 188){
-      console.log('is left');
+      console.log('is comma');
   // full stop
     } else if (e.keyCode == 190) {
-      console.log('is right');
+      console.log('is fullstop');
   // z key
     } else if (e.keyCode == 90) {
-      console.log('is comma');
+      console.log('is z');
   // x key
     } else if (e.keyCode == 88) {
-      console.log('is fullstop');
+      console.log('is x');
     }
   };
 
@@ -52,7 +52,7 @@ window.onload = function(){
 
 	function printMsg(msg, x, y) {
 		ctx.font = "12pt Calibri";
-		ctx.fillText(msg, x, y);
+		ctx.fillText("DT = " + msg, x, y);
 	}
 
 	function clearScreen() {
@@ -68,7 +68,7 @@ window.onload = function(){
 	function render(dt){
 		clearScreen();
 		printMsg(dt, 10, 25);
-	};
+	}
 	// usage:
 	// all render to screen
 
