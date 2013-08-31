@@ -60,7 +60,9 @@ window.onload = function(){
 
 	function printMsg(msg, x, y) {
 		ctx.font = "12pt Calibri";
-		ctx.fillText(msg, x, y);
+    ctx.fillStyle = "rgb(0, 0, 0)";
+    ctx.fillText(msg, x, y);
+    ctx.fill();
 	}
 
 	function clearScreen() {
@@ -74,15 +76,26 @@ window.onload = function(){
 		}
 		return someArray;
 	}
-	
-	function decreaseMeter(player, dt) {
-		effortMeters[player - 1] -= dt/100;
-	}
-		
 
+	function decreaseMeter(player, dt) {
+    if (effortMeters[player - 1] <= 0){
+      effortMeters[player - 1] = 0;
+    } else {
+      effortMeters[player - 1] -= dt/100;
+    }
+	}
+
+  // create rectangles
+  var drawMeters = function(x, y, w, h){
+    ctx.beginPath();
+    ctx.fillStyle = "rgb(125, 0, 0)";
+    ctx.fillRect(x, y, w, h);
+    ctx.fill();
+  };
 
   function update(dt){
 		decreaseMeter(1, dt);
+    drawMeters(275, 0, 25, 150);
 		render(dt);
   }
   // usage:
@@ -92,6 +105,8 @@ window.onload = function(){
 		clearScreen();
 		printMsg("DT=" + dt, 10, 25);
 		printMsg("eff=" + effortMeters[0], 10, 50);
+    // height of convas is being reported as 150px!
+    drawMeters(270, (145 - (effortMeters[0])), 20, effortMeters[0]);
 	}
 	// usage:
 	// all render to screen
