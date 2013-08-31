@@ -86,9 +86,9 @@ window.onload = function(){
 	}
 
   // create rectangles
-  var drawMeters = function(x, y, w, h){
+  var drawMeters = function(x, y, w, h, col){
     ctx.beginPath();
-    ctx.fillStyle = "rgb(125, 0, 0)";
+    ctx.fillStyle = col;
     ctx.fillRect(x, y, w, h);
     ctx.fill();
   };
@@ -106,7 +106,8 @@ window.onload = function(){
 		printMsg("DT=" + dt, 10, 25);
 		printMsg("eff=" + effortMeters[0], 10, 50);
     // height of convas is being reported as 150px!
-    drawMeters(270, (145 - (effortMeters[0])), 20, effortMeters[0]);
+    drawMeters(270, 5, 20, 140, '#000000');
+    drawMeters(270, (145 - (effortMeters[0])), 20, effortMeters[0], '#ff0000');
 	}
 	// usage:
 	// all render to screen
