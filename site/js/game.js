@@ -8,7 +8,11 @@ window.onload = function(){
 	var now, last = timestamp();
 	var players = 1;
 	var effortMeters = createMeters(players);
-	console.log(effortMeters);
+
+	var COMMA = 188;
+			FULLSTOP = 190;
+			Z = 90;
+			X = 88;
 
   // game vars
 
@@ -21,16 +25,16 @@ window.onload = function(){
 
   document.onkeydown=function(e){
   // comma
-    if (e.keyCode == 188){
+    if (e.keyCode == COMMA){
       console.log('is comma');
   // full stop
-    } else if (e.keyCode == 190) {
+    } else if (e.keyCode == FULLSTOP) {
       console.log('is fullstop');
   // z key
-    } else if (e.keyCode == 90) {
+    } else if (e.keyCode == Z) {
       console.log('is z');
   // x key
-    } else if (e.keyCode == 88) {
+    } else if (e.keyCode == X) {
       console.log('is x');
     }
   };
