@@ -11,8 +11,8 @@ window.onload = function(){
 	var players = 1;
 	var initialMeter = 100;
 	var effortMeters = createMeters(players);
-	var decreaseRate = 1/75;
-	var increaseRate = 1/10;
+	var decreaseRate = 1/40;
+	var increaseRate = 1/5;
 	var keyDown = 0;
 
 	var COMMA = 188;
